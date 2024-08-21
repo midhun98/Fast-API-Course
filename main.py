@@ -1,3 +1,4 @@
+from random import randrange
 from typing import Optional
 
 from fastapi import FastAPI
@@ -24,7 +25,7 @@ async def say_hello(name: str):
     return {"message": f"Hello {name}"}
 
 
-@app.post("/create-posts")
+@app.post("/posts")
 async def create_post(newpost: Post):
     print(newpost)
     print(newpost.dict())
@@ -35,3 +36,16 @@ async def create_post(newpost: Post):
 async def create_post2(payload: dict = Body(...)):
     print(payload)
     return {"data": "newpost"}
+
+my_posts = [{"title": "hello1", "content": "world1"}, {"title": "hello2", "content": "world2"}]
+
+@app.get("/create-posts3")
+async def create_post3():
+    return {"data": my_posts}
+
+@app.post("/create-posts4")
+async def create_post3(post: Post):
+    post_dict = post.dict()
+    post_dict["id"] = randrange(0, 10000)
+    my_posts.append(post_dict)
+    return {"data": my_posts}

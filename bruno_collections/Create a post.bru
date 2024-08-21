@@ -1,0 +1,23 @@
+meta {
+  name: Create a post
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseurl}}/create-posts4
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+  "title": "hello2",
+  "content": "world3"
+  }
+  
+}
+
+docs {
+  Create a new post
+}
