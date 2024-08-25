@@ -1,0 +1,19 @@
+meta {
+  name: PUT posts
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseurl}}/posts/2
+  body: json
+  auth: none
+}
+
+body:json {
+    {
+      "title": "helloss2",
+      "content": "worldss2"
+    }
+  
+}
